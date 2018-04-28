@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
 import Button from './Button';
+import MyMap from './MyMap';
 import Welcome from './Welcome';
 
 storiesOf('Welcome', module)
@@ -15,3 +16,7 @@ storiesOf('Button', module)
   .add('with some emoji', () => (
     <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>
   ));
+
+storiesOf('MyMap', module)
+	.add('example', () => (
+		<MyMap></MyMap>));
