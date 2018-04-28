@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
 import Button from './Button';
-import MyMap from './MyMap';
+import MapContainer from './Map';
 import Welcome from './Welcome';
 
 storiesOf('Welcome', module)
@@ -17,6 +17,6 @@ storiesOf('Button', module)
     <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>
   ));
 
-storiesOf('MyMap', module)
+storiesOf('MapContainer', module)
 	.add('example', () => (
-		<MyMap></MyMap>));
+		<MapContainer></MapContainer>));

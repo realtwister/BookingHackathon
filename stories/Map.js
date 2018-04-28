@@ -2,30 +2,30 @@ import React from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper, Polygon} from 'google-maps-react';
 
 export class MapContainer extends React.Component {
-	mapClicked(mapProps, map, clickEvent) {
-		console.log(mapProps);
-	}
+  constructor(props) {
+    super(props);
+    this.state = {triangleCoords: []};
+  }
+  mapClicked(mapProps, map, clickEvent) {
+    console.log("Latitude: "+clickEvent.latLng.lat()+" "+", longitude: "+clickEvent.latLng.lng());
+    this.setState({triangleCoords: [...this.state.triangleCoords, 
+        {lat: clickEvent.latLng.lat(), lng: clickEvent.latLng.lng()}]});
+  }
 
-	render() {
-		const triangleCoords = [
-		{lat: 25.774, lng: -80.190},
-		{lat: 18.466, lng: -66.118},
-		{lat: 32.321, lng: -64.757},
-		{lat: 25.774, lng: -80.190}
-		];
-		return (
-				<Map google={this.props.google} zoom={14}
-				onClick={this.mapClicked}>
-				<Polygon
-				paths={triangleCoords}
-				strokeColor="#0000FF"
-				strokeOpacity={0.8}
-				strokeWeight={2}
-				fillColor="#0000FF"
-				fillOpacity={0.35} />
-				</Map>
-				);
-	}
+  render() {
+    return (
+        <Map google={this.props.google} zoom={14}
+        onClick={this.mapClicked.bind(this)}>
+        <Polygon
+        paths={this.state.triangleCoords}
+        strokeColor="#0000FF"
+        strokeOpacity={0.8}
+        strokeWeight={2}
+        fillColor="#0000FF"
+        fillOpacity={0.35} />
+        </Map>
+        );
+  }
 }
 
 export default GoogleApiWrapper({
