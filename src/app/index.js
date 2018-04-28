@@ -5,8 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from './components/App';
-import Home from './components/home/Home';
-import About from './components/about/About';
+import Search from './components/search/Search';
 
 import reducers from './reducers';
 
@@ -19,8 +18,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
       <Route path="/" component={App}>
-        <IndexRoute component={Home} />;
-        <Route path="/about" component={About} />
+        <IndexRoute component={Search} />;
       </Route>
     </Router>
   </Provider>

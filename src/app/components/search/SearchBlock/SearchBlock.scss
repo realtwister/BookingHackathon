@@ -1,0 +1,28 @@
+.SearchBlock{
+    background: #febb02;
+    border:1px solid #e2aa11;
+    padding:10px;
+    font-size: 13px;
+    border-radius: 3px;
+
+    h2{
+        padding:0;
+        margin:0;
+        font-weight: normal;
+    }
+    .SearchBox {
+        display:flex;
+        flex-direction: column;
+    }
+    button{
+        background: #07c;
+        color: #fff;
+        font-size: 23px;
+    }
+    .row{
+        margin-bottom: 5px;
+        &.last{
+            margin-bottom: 0;
+        }
+    }
+}

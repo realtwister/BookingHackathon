@@ -1,0 +1,13 @@
+.search {
+    display:flex;
+    flex-direction: row;
+    background:grey;
+    .sidebar {
+        width:24%;
+        margin-right: 10px;
+    }
+
+    .main {
+        flex-grow: 1;
+    }
+}
