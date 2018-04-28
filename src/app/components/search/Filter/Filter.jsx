@@ -1,12 +1,6 @@
 import React from 'react';
 import style from './Filter.scss';
 
-const Row = ({children, last})=>(
-  <div className={"row"+(last? " last": "")}>
-    {children}
-  </div>
-);
-
 const FilterItem = ({name})=>(
   <div className="item">
     <div>
