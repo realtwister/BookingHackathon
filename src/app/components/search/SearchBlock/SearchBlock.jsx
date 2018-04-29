@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './SearchBlock.scss';
+import DatePicker from './DatePicker'
 
 import SearchBox from './SearchBox.jsx';
 
@@ -25,18 +26,21 @@ class SearchBlock extends React.Component{
 
   onSearch(){
     let {onSearch} = this.props;
-    onSearch(this.state.values);
+    var tmp = this.state.values
+    tmp.datepicker = this.refs.datepicker.getInterval()
+    onSearch(tmp);
   }
 
   render(){
     return(
       <div className="SearchBlock">
         <h2>
-          Zoek
+          Search
         </h2>
         <Row>
           <SearchBox onChange={this.changeVal('query').bind(this)} />
         </Row>
+        <DatePicker ref = 'datepicker'/>
         <Row last>
           <button onClick={this.onSearch.bind(this)}>Zoek</button>
         </Row>

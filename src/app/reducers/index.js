@@ -7,7 +7,7 @@ const apiReducer = (state = {hotels:{}}, action) =>{
   state = {...state};
   switch(action.type){
     case REPLACE_HOTELS:
-      state.hotels = {...action.hotels.reduce((acum,hotel) => {acum[hotel.hotel_id] = hotel;  return acum;},{} )};
+      state.hotels = {...action.hotels};
       break;
   }
   return state;

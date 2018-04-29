@@ -13,11 +13,11 @@ const FilterItem = ({name,price_slider,boolean_slider, onChange})=>(
 const Filter = ({setFilter}) => (
   <div className="filter">
     <h2>
-      Filter op:
+      Apply filters:
     </h2>
     <div>
       <h3>
-        Uw budget:
+        Your budget:
       </h3>
       <FilterItem name="Price" onChange={setFilter('price')} price_slider/>
       <FilterItem name="Parking" onChange={setFilter('parking')} boolean_slider/>

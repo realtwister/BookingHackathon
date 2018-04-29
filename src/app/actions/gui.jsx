@@ -20,7 +20,9 @@ function calc_y(x, width, x0)
 
 function calc_score(hotel, filters)
 {
+  var score
   var score = parseFloat(hotel.review_score) * 10;
+  if (isNaN(score)) {score = Math.random() * 50 + 50;}
   for (var name in filters)
   {
     if (name == 'MapSelector')
