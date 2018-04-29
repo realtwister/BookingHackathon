@@ -19,9 +19,13 @@
 
     .item{
         display:flex;
-        align-items: center;
-        .name{
-            flex-grow: 1;
+        .filter_name{
+            width:120px;
+        }
+        .filter_element{
+            display: flex;
+            align-items: center;
+            width:120px;
         }
     }
 
