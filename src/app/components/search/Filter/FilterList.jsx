@@ -1,4 +1,4 @@
-var feature_db = [["parking", "free_parking", "Free Parking"],
+export var feature_db = [["parking", "free_parking", "Free Parking"],
                   ["airco", "air_conditioning", "Air Conditioning"],
                   ["24hr", "24_hour_front_desk", "24 Hour Reception"],
                   ["wifi", "free_wifi_internet_access_included", "Free WiFi"],

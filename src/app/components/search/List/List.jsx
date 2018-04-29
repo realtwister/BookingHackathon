@@ -1,6 +1,6 @@
 import React from 'react';
 import './List.scss';
-import {features_display} from '../Filter/FilterList.jsx'
+import {feature_db} from '../Filter/FilterList.jsx'
 import {MdLocationOn,MdDirectionsWalk} from 'react-icons/lib/md'
 
 const ScoreWidget = ({score, reviews}) =>(
@@ -19,42 +19,61 @@ const ScoreWidget = ({score, reviews}) =>(
   </span>
 )
 
-class ListItem extends React.Component
+import {connect} from 'react-redux';
+
+const interpolateColor = (x) => "rgba(0, 255, 0,"+(x/5)+ ") ";
+
+const PropertyBadge = ({filter, name}) => {
+  var style = {};
+  if (filter !== undefined){
+    style = {backgroundColor: interpolateColor(filter)}
+  }
+  return(
+    <div className ="propertyBadge" style={style}>
+      {name}
+    </div>
+);}
+
+const PropBadge = connect((state, {db})=> {
+  return({
+  filter: state.gui.filters[db]
+})},null)(PropertyBadge);
+
+export class ListItem extends React.Component
 {
   constructor(props)
   {
     super(props)
-    this.hotel = props.hotel
   }
 
   render()
   {
-    return(<div className="item">
+    var {hotel} = this.props;
+    return(<div className="listitem">
       <div className="thumb">
-        <img src={this.hotel.photo} width ="200px" />
+        <img src={hotel.photo} width ="200px" />
       </div>
       <div className="content">
         <div className="row">
           <div className="title">
             <h2>
-              {this.hotel.hotel_name}
+              {hotel.hotel_name}
             </h2>
             <div className="address">
               <MdLocationOn />
               <span>
-              Chefchaouene - bekijk kaart</span>
-              <MdDirectionsWalk />
-              <span>1,4 km van het centrum</span>
+              {hotel.address}</span>
             </div>
           </div>
-          <div>
-            Properties:
-            <ul>
-              {features_display.map(([key,val])=>{if (this.hotel.hotel_amenities.indexOf(key) > -1) {return(<li key={key}>{val}</li>)}})}
-            </ul>
-            Price: &euro;{parseFloat(this.hotel.price).toFixed(2)}
+          <ScoreWidget score={hotel.review_score} reviews={hotel.review_nr} />
+        </div>
+        <div className="row">
+          <div className="properties">
+              {feature_db.map(([db,key,val])=>{if (hotel.hotel_amenities.indexOf(key) > -1) {return(<PropBadge key={key} db={db} name={val} />)}})}
           </div>
-          <ScoreWidget score={this.hotel.review_score} reviews={this.hotel.review_nr} />
+        </div>
+        <div className="row price">
+          <div>&euro;{parseFloat(hotel.price).toFixed(2)}</div>
         </div>
       </div>
     </div>)
