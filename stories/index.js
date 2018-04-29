@@ -1,9 +1,10 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
 import Button from './Button';
-import MapContainer from './Map';
+import MapContainer from './MapContainer';
+import MyBestMap from './MyBestMap';
+import PopUp from './Popup';
 import Welcome from './Welcome';
-import Test from './test_isInPolygon';
 
 storiesOf('Welcome', module)
 .add('to Storybook', () => (
@@ -20,15 +21,11 @@ storiesOf('Button', module)
 
 storiesOf('MapContainer', module)
 .add('example', () => (
-
       <MapContainer></MapContainer>));
 
-storiesOf('isInPolygon', module)
-.add('isInPolygon', (Points,Polygon) => (
-      <MyMap></MyMap>))
-.add('Test_isInPolgon', () => (
-      <Test></Test>
-      ));
+storiesOf('MyBestMap', module)
+.add('example2', () => (
+      <MyBestMap></MyBestMap>));
 
 import {ListItem} from '../src/app/components/search/List/List.jsx';
 //import Button from './Button';
@@ -80,3 +77,7 @@ var hotel = {
 
 storiesOf('Card', module)
   .add('Static', ()=>(<ListItem hotel={hotel} />))
+
+storiesOf('Popup', module)
+.add('example2', () => (
+      <Popup></Popup>));
