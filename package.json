@@ -66,6 +66,8 @@
   "dependencies": {
     "chart.js": "^1.1.1",
     "express": "^4.13.4",
+    "google-maps-react": "^2.0.2",
+    "react-google-map-draw-filter": "^1.2.2",
     "multi-slider": "^4.1.0",
     "react": "^15.6.2",
     "react-chartjs": "^1.2.0",
