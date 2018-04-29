@@ -8,8 +8,8 @@ export default class DateRange extends React.Component {
 	constructor (props) {
 		super(props)
 			this.state = {
-startDate: moment('2014-02-08'),
-					 endDate: moment('2014-02-10'),
+					startDate: moment('2018-04-29'),
+					 endDate: moment('2018-05-03'),
 			}
 	}
 
