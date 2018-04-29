@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './PriceSlider.scss';
 import MultiSlider from "multi-slider";
-import { AreaChart, Area, YAxis } from 'recharts';
+import { AreaChart, Area, YAxis, ReferenceLine } from 'recharts';
 
 var xs = [...Array(200).keys()].map(x => 10*x)
 
@@ -44,6 +44,7 @@ class PriceSlider extends React.Component
       <div className = 'priceslider_container'>
          <div className = 'priceslider_graph'>
            <AreaChart width={150} height={40} data={this.state.data}>
+             <ReferenceLine x={50} />
              <YAxis type = "number" domain = {[0,1]} hide = {true}/>
              <Area type="monotone" dataKey="uv" stroke="#8884d8"/>
            </AreaChart>
