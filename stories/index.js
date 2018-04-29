@@ -2,8 +2,7 @@ import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
 import Button from './Button';
 import MapContainer from './MapContainer';
-import MyBestMap from './MyBestMap';
-import PopUp from './Popup';
+import Popup from './Popup';
 import Welcome from './Welcome';
 import MyBestMap from './MyBestMap';
 

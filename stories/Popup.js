@@ -1,4 +1,6 @@
 import React from "react"
+import BestStylesHeet from "./Popup.scss"
+import MyBestMap from './MyBestMap';
 
 class Popup extends React.Component {
   render() {
@@ -6,6 +8,7 @@ class Popup extends React.Component {
       <div className='popup'>
         <div className='popup_inner'>
           <h1>{this.props.text}</h1>
+        <MyBestMap />
         <button onClick={this.props.closePopup}>close me</button>
         </div>
       </div>
@@ -33,7 +36,6 @@ class App extends React.Component {
         <p>Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br />Ganz viel inhalt.<br /></p>
         {this.state.showPopup ? 
           <Popup
-            text='Close Me'
             closePopup={this.togglePopup.bind(this)}
           />
           : null
