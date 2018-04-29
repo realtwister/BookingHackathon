@@ -2,7 +2,7 @@ import React from 'react';
 import style from './search.scss';
 
 import SearchBlock from '../../containers/SearchBlock';
-import Filter from './Filter/Filter';
+import Filter from '../../containers/Filter';
 import List from './List/List';
 
 const Search = ({hotels,loading}) => (
