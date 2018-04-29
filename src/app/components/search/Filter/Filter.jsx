@@ -3,14 +3,14 @@ import dafuq from './Filter.scss';
 import PriceSlider from './PriceSlider/PriceSlider';
 import BooleanSlider from './BooleanSlider/BooleanSlider';
 
-const FilterItem = ({name,price_slider,boolean_slider})=>(
+const FilterItem = ({name,price_slider,boolean_slider, onChange})=>(
   <div className="item">
     {price_slider ? (<div className="filter_name" style = {{width: 100}}>{name}</div>) : (<div className="filter_name">{name}</div>)}
-    {price_slider ? (<div className="filter_name" style = {{width: 150}}><PriceSlider/></div>) : (<div className="filter_name"><BooleanSlider/></div>)}
+    {price_slider ? (<div className="filter_name" style = {{width: 150}}><PriceSlider onChange={onChange}/></div>) : (<div className="filter_name"><BooleanSlider/></div>)}
   </div>
 )
 
-const Filter = () => (
+const Filter = ({setFilter}) => (
   <div className="filter">
     <h2>
       Filter op:
@@ -19,7 +19,7 @@ const Filter = () => (
       <h3>
         Uw budget:
       </h3>
-      <FilterItem name="Price" price_slider/>
+      <FilterItem name="Price" onChange={setFilter('price')} price_slider/>
       <FilterItem name="Parking" boolean_slider/>
       <FilterItem name="Air Conditioning" boolean_slider/>
       <FilterItem name="24 hour service" boolean_slider/>

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 import {REPLACE_HOTELS} from '../actions/api.jsx';
-import {SET_ORDER, LOADING} from '../actions/gui.jsx';
+import {SET_ORDER, LOADING, SET_FILTER} from '../actions/gui.jsx';
 
 const apiReducer = (state = {hotels:{}}, action) =>{
   state = {...state};
@@ -13,7 +13,7 @@ const apiReducer = (state = {hotels:{}}, action) =>{
   return state;
 }
 
-const guiReducer = (state={order:[], loading:false}, action) => {
+const guiReducer = (state={order:[], loading:false, filters:{}}, action) => {
   state = { ...state};
   switch(action.type){
     case SET_ORDER:
@@ -23,6 +23,11 @@ const guiReducer = (state={order:[], loading:false}, action) => {
     case LOADING:
       state.loading = true;
       break;
+    case SET_FILTER:
+      state.filters = {...state.filters, [action.filter]:action.value};
+      break;
+
+
   }
   return state;
 }

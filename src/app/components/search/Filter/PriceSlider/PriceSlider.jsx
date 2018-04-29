@@ -7,9 +7,9 @@ var xs = [...Array(200).keys()].map(x => 10*x)
 
 class PriceSlider extends React.Component
 {
-  constructor(props)
+  constructor()
   {
-    super(props)
+    super()
     this.state = {}
   }
 
@@ -31,6 +31,7 @@ class PriceSlider extends React.Component
       tmp_data.push({name:xs[i], uv:ys[i]})
     }
     this.setState({data:tmp_data});
+    this.props.onChange(values);
   }
 
   calc_ys(xs, width, x0)
