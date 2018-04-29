@@ -23,7 +23,14 @@ function calc_score(hotel, filters)
   var score = parseFloat(hotel.review_score) * 10;
   for (var name in filters)
   {
-    if (name == 'price')
+    if (name == 'MapSelector')
+    {
+      if (filters[name].indexOf(hotel.hotel_id) == -1)
+      {
+        score -= 10000;
+      }
+    }
+    else if (name == 'price')
     {
       score += calc_y(parseFloat(hotel.price), filters[name][0], filters[name][1]) * 100;
     }
