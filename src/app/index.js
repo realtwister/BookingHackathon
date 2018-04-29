@@ -18,10 +18,10 @@ const store = createStoreWithMiddleware(reducers, composeWithDevTools(applyMiddl
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
-      <Route path="/" component={App}>
-        <IndexRoute component={Search} />;
-      </Route>
-    </Router>
+ <Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
+   <Route path="/" component={App}>
+     <IndexRoute component={Search} />;
+   </Route>
+     </Router>
   </Provider>
   , document.getElementById('react-root'));

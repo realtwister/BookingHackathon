@@ -1,9 +1,10 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
-import Button from './Button';
-import Welcome from './Welcome';
+import Parent from './ListSliderParent';
+//import Button from './Button';
+//import Welcome from './Welcome';
 
-storiesOf('Welcome', module)
+/*storiesOf('Welcome', module)
   .add('to Storybook', () => (
     <Welcome showApp={linkTo('Button')}/>
   ));
@@ -14,4 +15,7 @@ storiesOf('Button', module)
   ))
   .add('with some emoji', () => (
     <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>
-  ));
+  ));*/
+  
+storiesOf('Slider', module)
+  .add('Parent', ()=>(<Parent/>));
