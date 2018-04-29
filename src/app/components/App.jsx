@@ -3,9 +3,13 @@ import Header from './common/Header';
 
 function App({ children }) {
   return (
-    <div className="container">
+    <div className="root">
       <Header />
-      {children}
+      <div className="center">
+        <div className="container">
+          {children}
+        </div>
+      </div>
     </div>
   );
 }

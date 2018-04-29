@@ -1,0 +1,12 @@
+.search {
+    display:flex;
+    flex-direction: row;
+    .sidebar {
+        width:250px;
+        margin-right: 10px;
+    }
+
+    .main {
+        flex-grow: 1;
+    }
+}

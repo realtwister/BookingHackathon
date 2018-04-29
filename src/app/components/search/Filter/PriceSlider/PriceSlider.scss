@@ -1,0 +1,35 @@
+.priceslider_container
+{
+  height:80px;
+  width:150px;
+}
+
+.priceslider_graph
+{
+  height:40px;
+}
+
+.priceslider_slider
+{
+  margin-top:-10px;
+  height:40px;
+}
+
+.priceslider_values
+{
+  margin-top: -10px;
+  display:flex;
+}
+
+.priceslider_minvalue
+{
+  padding-left: 10px;
+  width:100px;
+}
+
+.priceslider_maxvalue
+{
+  width:100px;
+  text-align: right;
+  padding-right: 10px;
+}

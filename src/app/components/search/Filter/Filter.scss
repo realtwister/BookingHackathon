@@ -1,0 +1,31 @@
+.filter{
+    background: #fff;
+    border:1px solid #07c;
+    padding:10px;
+    font-size: 13px;
+    border-radius: 3px;
+    margin-top:10px;
+
+    h2{
+        font-size: 15px;
+        font-weight: light;
+        color:white;
+        background:#07c;
+        margin:-10px;
+        margin-bottom:5px;
+        padding:10px;
+    }
+
+    .item{
+        display:flex;
+        .filter_name{
+            width:120px;
+        }
+        .filter_element{
+            display: flex;
+            align-items: center;
+            width:120px;
+        }
+    }
+
+}
