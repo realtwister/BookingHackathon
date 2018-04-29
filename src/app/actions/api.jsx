@@ -32,7 +32,7 @@ export const searchHotels = (query)=> (dispatch,getState)=> {
       dispatch(calculateOrder());
       return;
     }
- fetch("https://distribution-xml.booking.com/2.1/json/hotelAvailability?checkin=2018-07-27&checkout=2018-07-28&city_ids="+city.id+ "&room1=A&extras=hotel_details", {
+ fetch("https://distribution-xml.booking.com/2.1/json/hotelAvailability?checkin=2018-07-27&checkout=2018-07-28&city_ids="+city.id+ "&room1=A&extras=hotel_details,hotel_amenities", {
       headers: {
         "Authorization": 'Basic ' + btoa('booking_hackathon_ichack18:WorkingAtBooking.com2018')
       }

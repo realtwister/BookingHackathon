@@ -1,3 +1,5 @@
+import {features_api} from '../components/search/Filter/FilterList.jsx'
+
 export const SET_ORDER = "SET_ORDER";
 export const LOADING = "LOADING";
 export const SET_FILTER = "SET_FILTER";
@@ -11,39 +13,50 @@ export const loading = () => ({
   type: LOADING
 })
 
-
-function get_filters()
+function calc_y(x, width, x0)
 {
-  var filters = {};
-  var filter_items = document.getElementsByClassName('item')
-  for (var i = 0; i < filter_items.length; i++)
+  return 1 / (1 + Math.exp(width * (x - x0)));
+}
+
+function calc_score(hotel, filters)
+{
+  var score = parseFloat(hotel.review_score) * 10;
+  for (var name in filters)
   {
-    var name = filter_items[i].children[0].innerHTML;
-    if (name == "Price")
+    if (name == 'price')
     {
-      var container = filter_items[i].children[1].children[0].children[1].children[0]
-      var x0 = container.children[0].getAttribute('x2')
-      var width = container.children[1].getAttribute('x2')
-      console.log(x0)
-      console.log(width)
+      score += calc_y(parseFloat(hotel.price), filters[name][0], filters[name][1]) * 100;
+    }
+    else
+    {
+      for (var [feature,api_key] of features_api)
+      {
+        if (name == feature)
+        {
+          var tmp = (hotel.hotel_amenities.indexOf(api_key) > -1 ? 1 : 0)
+          score += tmp * parseFloat(filters[name]) * 20;
+        }
+      }
     }
   }
+  return score;
 }
 
-function calc_score(hotel)
-{
-  var filters = get_filters()
-  return 0;
-}
-
-export const setFilter = (filter, value) => ({
+const doSetFilter = (filter, value) => ({
   type: SET_FILTER,
   filter,
   value
 });
 
+export const setFilter = (filter, value) => (dispatch, getState) => {
+  dispatch(doSetFilter(filter,value));
+  dispatch(calculateOrder());
+};
+
 export const calculateOrder = () => (dispatch, getState) => {
   var hotels = getState().api.hotels;
-  var tmp = Object.entries(hotels).map(([id,hotel]) => [id,calc_score(hotel)]).sort(function(a,b){a[1] - b[1]});
+  var filters = getState().gui.filters;
+  var tmp = Object.entries(hotels).map(([id,hotel]) => [id,calc_score(hotel, filters)]);
+  tmp = tmp.sort(function(a,b){return b[1] - a[1]});
   dispatch(setOrder(tmp.map(([id,hotel]) => id)));
 };

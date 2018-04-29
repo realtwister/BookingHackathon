@@ -1,9 +1,9 @@
 import React from 'react';
 import style from './PriceSlider.scss';
 import MultiSlider from "multi-slider";
-import { AreaChart, Area, YAxis, ReferenceLine } from 'recharts';
+import { AreaChart, Area, YAxis, ReferenceLine, ReferenceDot } from 'recharts';
 
-var xs = [...Array(200).keys()].map(x => 10*x)
+var xs = [...Array(200).keys()].map(x => 5*x)
 
 class PriceSlider extends React.Component
 {
@@ -15,7 +15,7 @@ class PriceSlider extends React.Component
 
   componentDidMount()
   {
-    this.update_plot([100,100,1800]);
+    this.update_plot([100,100,800]);
   }
 
   update_plot(values)
@@ -30,8 +30,8 @@ class PriceSlider extends React.Component
     {
       tmp_data.push({name:xs[i], uv:ys[i]})
     }
-    this.setState({data:tmp_data});
-    this.props.onChange(values);
+    this.setState({data:tmp_data, x_value_slider: parseInt(set_point/5)});
+    this.props.onChange([width, x0]);
   }
 
   calc_ys(xs, width, x0)
@@ -45,17 +45,18 @@ class PriceSlider extends React.Component
       <div className = 'priceslider_container'>
          <div className = 'priceslider_graph'>
            <AreaChart width={150} height={40} data={this.state.data}>
-             <ReferenceLine x={50} />
+             <ReferenceLine x={this.state.x_value_slider} stroke = "blue" strokeDasharray="3 3"/>
+             <ReferenceDot x={this.state.x_value_slider + 20} y = {1} stroke = "red" r = {0} label = {"€" + this.state.x_value_slider*5}/>
              <YAxis type = "number" domain = {[0,1]} hide = {true}/>
              <Area type="monotone" dataKey="uv" stroke="#8884d8"/>
            </AreaChart>
          </div>
          <div className = 'priceslider_slider'>
-           <MultiSlider defaultValues = {[100,100,1800]} onChange = {this.update_plot.bind(this)}/>
+           <MultiSlider defaultValues = {[100,100,800]} onChange = {this.update_plot.bind(this)}/>
          </div>
          <div className = "priceslider_values">
           <div className = "priceslider_minvalue">&euro;0</div>
-          <div className = "priceslider_maxvalue">&euro;2000</div>
+          <div className = "priceslider_maxvalue">&euro;1000</div>
          </div>
        </div>
     )
