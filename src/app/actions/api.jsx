@@ -22,7 +22,7 @@ const getCity = (query) => {
   })
 })}
 
-var hotels = []
+//var hotels = []
 
 import {calculateOrder, loading} from './gui.jsx';
 export const searchHotels = (parameters) => (dispatch,getState)=> {
@@ -36,7 +36,6 @@ export const searchHotels = (parameters) => (dispatch,getState)=> {
     var promises = []
     var checkins = []
     var checkouts = []
-    console.log(parameters)
     var ctr = moment(parameters.datepicker.startDate)
     ctr.add(parameters.datepicker.maxDuration - 1, 'days')
     while (ctr <= parameters.datepicker.endDate)
@@ -47,10 +46,6 @@ export const searchHotels = (parameters) => (dispatch,getState)=> {
       var checkin = tmp.format("YYYY-MM-DD")
       checkins.push(checkin)
       checkouts.push(checkout)
-      console.log("Checkin:")
-      console.log(checkin)
-      console.log("Checkout:")
-      console.log(checkout)
       promises.push(fetch("https://distribution-xml.booking.com/2.1/json/hotelAvailability?checkin="+checkin+"&checkout="+checkout+"&city_ids="+city.id+ "&room1=A&extras=hotel_details,hotel_amenities", {
           headers: {
             "Authorization": 'Basic ' + btoa('booking_hackathon_ichack18:WorkingAtBooking.com2018')
@@ -77,15 +72,18 @@ export const searchHotels = (parameters) => (dispatch,getState)=> {
           for (var hotel of value.result)
           {
             var hotel_id = hotel.hotel_id
-            if (Object.keys(hotels).indexOf(hotel_id) == -1)
+            if (Object.keys(hotels).indexOf(String(hotel_id)) == -1)
             {
               hotels[hotel_id] = hotel
               hotels[hotel_id].time_windows = []
             }
+            else
+            {
+              console.log("Multiple.")
+            }
             hotels[hotel_id].time_windows.push([checkins[i], checkouts[i], hotel.price])
           }
         }
-        console.log(hotels)
         dispatch(loading());
         dispatch(replaceHotels(hotels));
         dispatch(calculateOrder());

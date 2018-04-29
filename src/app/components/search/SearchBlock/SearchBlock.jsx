@@ -28,7 +28,6 @@ class SearchBlock extends React.Component{
     let {onSearch} = this.props;
     var tmp = this.state.values
     tmp.datepicker = this.refs.datepicker.getInterval()
-    console.log(tmp)
     onSearch(tmp);
   }
 
@@ -36,7 +35,7 @@ class SearchBlock extends React.Component{
     return(
       <div className="SearchBlock">
         <h2>
-          Zoek
+          Search
         </h2>
         <Row>
           <SearchBox onChange={this.changeVal('query').bind(this)} />

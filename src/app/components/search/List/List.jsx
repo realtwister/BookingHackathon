@@ -2,6 +2,7 @@ import React from 'react';
 import './List.scss';
 import {feature_db} from '../Filter/FilterList.jsx'
 import {MdLocationOn,MdDirectionsWalk} from 'react-icons/lib/md'
+import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar, Legend } from 'recharts';
 
 const ScoreWidget = ({score, reviews}) =>(
   <span className="ScoreWidget">
@@ -72,8 +73,14 @@ export class ListItem extends React.Component
               {feature_db.map(([db,key,val])=>{if (hotel.hotel_amenities.indexOf(key) > -1) {return(<PropBadge key={key} db={db} name={val} />)}})}
           </div>
         </div>
-        <div className="row price">
-          <div>&euro;{parseFloat(hotel.price).toFixed(2)}</div>
+        <div>
+        <BarChart width={200} height={200} data={hotel.time_windows.map(([ci,co,p]) => {return {name:ci + ' - ' + co, price:p}})}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="price" fill="#8884d8" />
+        </BarChart>
         </div>
       </div>
     </div>)
