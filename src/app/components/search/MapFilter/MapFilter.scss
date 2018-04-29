@@ -5,4 +5,12 @@
   position: relative;
   overflow: hidden;
   margin-top: 10px;
+  .smallMap{
+    cursor:pointer!important;
+    z-index: 1;
+    div{
+      z-index: 1!important;
+      cursor:pointer!important;
+    }
+  }
 }

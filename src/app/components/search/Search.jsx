@@ -3,7 +3,7 @@ import style from './search.scss';
 
 import SearchBlock from '../../containers/SearchBlock';
 import Filter from '../../containers/Filter';
-import MapFilter from './MapFilter/MapFilter';
+import MapFilter from '../../containers/MapFilter';
 import List from './List/List';
 
 const Search = ({hotels,loading}) => (
