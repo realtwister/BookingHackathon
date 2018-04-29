@@ -3,7 +3,9 @@ import { storiesOf, action, linkTo } from '@kadira/storybook';
 import Button from './Button';
 import MapContainer from './Map';
 import Welcome from './Welcome';
-import Test from './test_isInPolygon';
+import MyBestMap from './MyBestMap';
+
+
 
 storiesOf('Welcome', module)
 .add('to Storybook', () => (
@@ -25,10 +27,7 @@ storiesOf('MapContainer', module)
 
 storiesOf('isInPolygon', module)
 .add('isInPolygon', (Points,Polygon) => (
-      <MyMap></MyMap>))
-.add('Test_isInPolgon', () => (
-      <Test></Test>
-      ));
+      <MyBestMap></MyBestMap>))
 
 import {ListItem} from '../src/app/components/search/List/List.jsx';
 //import Button from './Button';
