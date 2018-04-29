@@ -4,7 +4,7 @@ import style from './SearchBlock.scss';
 const SearchBox = ({onChange}) => (
   <div className="SearchBox">
       <span>Bestemming:</span>
-      <input type="text"/>
+      <input type="text" onChange={onChange}/>
   </div>
 );
 

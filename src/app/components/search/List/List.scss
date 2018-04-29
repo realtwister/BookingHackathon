@@ -1,8 +1,36 @@
 .list{
   display: flex;
   flex-direction: column;
-  background:red;
   .item{
-    border:1px solid black;
+    border:1px solid #c6c6c6;
+    padding:16px;
+    margin-bottom:16px;
+    border-radius: 3px;
+    display: flex;
+
+    .thumb{
+      width:200px;
+      height:200px;
+      overflow: hidden;
+      border-radius: 3px;
+      margin-right: 16px;
+      img{
+        min-width: 100%;
+        min-height: 100%;
+      }
+    }
+    .content{
+      .ScoreWidget{
+        .title{
+          font-size:16px;
+          
+        }
+        .body{
+        }
+        .badge{
+
+        }
+      }
+    }
   }
 }
