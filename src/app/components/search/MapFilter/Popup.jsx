@@ -20,8 +20,6 @@ calcMarkers() {
   this.setState({markers});
 }
 render() {
-  console.log(this.props);
-  // return null;
   return(
 <GoogleMapDrawFilter
   width="100%" height="100%"

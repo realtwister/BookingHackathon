@@ -66,7 +66,7 @@ isProduction
       loader: ExtractSASS.extract(['css', 'sass']),
     })
   : webpackConfig.module.loaders.push({
-      test: /\.scss$/,
+      test: [/\.scss$/, /\.css$/],
       loaders: ['style', 'css', 'sass'],
     });
 
