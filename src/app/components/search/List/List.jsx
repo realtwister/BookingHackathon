@@ -74,7 +74,7 @@ export class ListItem extends React.Component
           </div>
         </div>
         <div>
-        <BarChart width={200} height={200} data={hotel.time_windows.map(([ci,co,p]) => {return {name:ci + ' - ' + co, price:p}})}>
+        <BarChart width={200} height={200} data={hotel.time_windows.map(([ci,co,p]) => {return {name:ci.slice(5) + ' - ' + co.slice(5), price:p}})}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />

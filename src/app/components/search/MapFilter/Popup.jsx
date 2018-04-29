@@ -3,7 +3,7 @@ import BestStylesHeet from "./Popup.scss"
 import GoogleMapDrawFilter from "react-google-map-draw-filter";
 import {MdClose} from 'react-icons/lib/md'
 
-import google from 'google-maps'
+//import google from 'google-maps'
 
 class MyBestMap extends React.Component {
   constructor() {

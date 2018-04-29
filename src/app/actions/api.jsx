@@ -77,10 +77,6 @@ export const searchHotels = (parameters) => (dispatch,getState)=> {
               hotels[hotel_id] = hotel
               hotels[hotel_id].time_windows = []
             }
-            else
-            {
-              console.log("Multiple.")
-            }
             hotels[hotel_id].time_windows.push([checkins[i], checkouts[i], hotel.price])
           }
         }
