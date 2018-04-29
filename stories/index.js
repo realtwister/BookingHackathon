@@ -5,6 +5,7 @@ import MapContainer from './MapContainer';
 import MyBestMap from './MyBestMap';
 import PopUp from './Popup';
 import Welcome from './Welcome';
+import MyBestMap from './MyBestMap';
 
 storiesOf('Welcome', module)
 .add('to Storybook', () => (
@@ -23,9 +24,9 @@ storiesOf('MapContainer', module)
 .add('example', () => (
       <MapContainer></MapContainer>));
 
-storiesOf('MyBestMap', module)
-.add('example2', () => (
-      <MyBestMap></MyBestMap>));
+storiesOf('isInPolygon', module)
+.add('isInPolygon', (Points,Polygon) => (
+      <MyBestMap></MyBestMap>))
 
 import {ListItem} from '../src/app/components/search/List/List.jsx';
 //import Button from './Button';
