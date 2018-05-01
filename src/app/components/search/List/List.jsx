@@ -22,12 +22,13 @@ const ScoreWidget = ({score, reviews}) =>(
 
 import {connect} from 'react-redux';
 
-const interpolateColor = (x) => "rgba(0, 255, 0,"+(x/5)+ ") ";
+const interpolateColor = (x) => "rgba(0, 128, 0,"+(x/5)+ ") ";
+const interpolateText = (x) => x>2?"#ffffff":"#000000";
 
 const PropertyBadge = ({filter, name}) => {
   var style = {};
   if (filter !== undefined){
-    style = {backgroundColor: interpolateColor(filter)}
+    style = {backgroundColor: interpolateColor(filter), color: interpolateText(filter)}
   }
   return(
     <div className ="propertyBadge" style={style}>

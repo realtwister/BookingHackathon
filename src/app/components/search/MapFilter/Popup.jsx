@@ -59,7 +59,7 @@ drawMode={true}
 markers={this.state.markers}
 heatMap = {true}
 mapStyle={{height: 400, width: 700}}
-handleReturnedMarkers={(args)=>{this.props.onSelect(args); this.updateHeatmap(args).bind(this)}}
+handleReturnedMarkers={this.props.onSelect}
 />
 );
   }
