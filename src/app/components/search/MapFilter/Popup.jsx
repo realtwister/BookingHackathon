@@ -21,23 +21,6 @@ calcMarkers() {
   }
   this.setState({markers});
 }
-getPoints(){
-
-}
-
-updateHeatmap(markers){
-
-  this.heatmap.set('data', this.getPoints());
-}
-getMapHandle(){
-  var ref = this.refs.fmapdraw
-  var gmaps = ref.state.google.maps;
-  var map = ref.state.map;
-  this.heatmap =  gmaps.visualization.HeatmapLayer({
-          data: this.getPoints(),
-          map: map
-        });
-}
 render() {
   //setTimeout(this.getMapHandle.bind(this),1000)
   var {hotels, google} = this.props;
@@ -57,7 +40,7 @@ render() {
 apiKey='AIzaSyADYWSlC4yEedJ-5lvQb9UFOVaMMux54Zc'
 drawMode={true}
 markers={this.state.markers}
-heatMap = {true}
+heatMap = {false}
 mapStyle={{height: 400, width: 700}}
 handleReturnedMarkers={this.props.onSelect}
 />

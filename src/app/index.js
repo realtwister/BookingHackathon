@@ -12,9 +12,10 @@ import reducers from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import './components/bundle.scss';
+import initstate from './initial_state';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
-const store = createStoreWithMiddleware(reducers, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStoreWithMiddleware(reducers,initstate, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>

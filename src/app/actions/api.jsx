@@ -1,3 +1,5 @@
+import  { login, password} from '../api_login';
+
 export const REPLACE_HOTELS = "ADD_HOTELS";
 var moment = require('moment')
 
@@ -9,7 +11,7 @@ export const replaceHotels = (hotels)=>({
 const getCity = (query) => {
   return fetch("https://distribution-xml.booking.com/2.1/json/autocomplete?language=en;text="+query, {
     headers: {
-      "Authorization": 'Basic ' + btoa('booking_hackathon_ichack18:WorkingAtBooking.com2018')
+      "Authorization": 'Basic ' + btoa(login+':'+password)
     }
   }).then( response =>{
     if (response.status != 200){
@@ -48,7 +50,7 @@ export const searchHotels = (parameters) => (dispatch,getState)=> {
       checkouts.push(checkout)
       promises.push(fetch("https://distribution-xml.booking.com/2.1/json/hotelAvailability?checkin="+checkin+"&checkout="+checkout+"&city_ids="+city.id+ "&room1=A&extras=hotel_details,hotel_amenities", {
           headers: {
-            "Authorization": 'Basic ' + btoa('booking_hackathon_ichack18:WorkingAtBooking.com2018')
+            "Authorization": 'Basic ' + btoa(login+':'+password)
           }
         }).then(response =>
         {
